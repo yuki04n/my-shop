@@ -97,87 +97,8 @@ nav {
 }
 .nav-cta:hover { background: var(--accent); }
 
-/* ── Hero ── */
-.hero {
-  min-height: 90vh;
-  display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
-}
-.hero-left {
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 80px 64px 80px 32px;
-}
-.hero-eyebrow { margin-bottom: 20px; }
-.hero-title {
-  font-family: var(--ff-head);
-  font-size: clamp(44px, 5.5vw, 80px);
-  font-weight: 300; line-height: 1.05; letter-spacing: -1.5px;
-  margin-bottom: 24px;
-}
-.hero-title strong { font-weight: 700; color: var(--accent); font-style: italic; }
-.hero-sub {
-  font-size: 15px; color: var(--muted); font-weight: 300;
-  max-width: 400px; line-height: 1.8; margin-bottom: 44px;
-}
-.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-.btn-primary {
-  display: inline-block; background: var(--accent); color: #fff;
-  padding: 16px 40px; font-family: var(--ff-mono); font-size: 12px;
-  letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
-  border: none; cursor: pointer; border-radius: var(--radius);
-  transition: all .25s;
-}
-.btn-primary:hover { background: var(--ink); transform: translateY(-2px); box-shadow: var(--shadow); }
-.btn-outline {
-  display: inline-block; border: 1px solid var(--ink); color: var(--ink);
-  padding: 15px 36px; font-family: var(--ff-mono); font-size: 12px;
-  letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
-  cursor: pointer; border-radius: var(--radius); background: transparent;
-  transition: all .25s;
-}
-.btn-outline:hover { background: var(--ink); color: #fff; }
-
-.hero-right {
-  background: var(--ink);
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden; min-height: 500px;
-}
-.hero-right::before {
-  content: '';
-  position: absolute; width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(45,106,79,.25) 0%, transparent 70%);
-  top: 50%; left: 50%; transform: translate(-50%,-50%);
-}
-.hero-display {
-  position: relative; z-index: 2;
-  display: flex; flex-direction: column; align-items: center; gap: 24px;
-  animation: floatY 5s ease-in-out infinite;
-}
-@keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-.hero-icons { display: flex; gap: 24px; align-items: center; }
-.hero-icon-circle {
-  width: 120px; height: 120px; border-radius: 50%;
-  border: 1px solid rgba(82,183,136,.3);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 48px;
-  position: relative;
-}
-.hero-icon-circle::after {
-  content: ''; position: absolute; inset: -12px;
-  border: 1px dashed rgba(82,183,136,.15);
-  border-radius: 50%;
-  animation: spin 20s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.hero-sep {
-  font-family: var(--ff-head); font-size: 28px; color: rgba(82,183,136,.4);
-}
-.hero-label {
-  font-family: var(--ff-mono); font-size: 11px; letter-spacing: 3px;
-  color: var(--accent2); text-transform: uppercase;
-}
-
 /* ── Products ── */
-.products-section { padding: 100px 0; }
+.products-section { padding: 60px 0; }
 .section-head {
   display: flex; align-items: flex-end; justify-content: space-between;
   margin-bottom: 56px;
@@ -405,39 +326,10 @@ footer { background: var(--ink); padding: 48px 32px 32px; }
     <li><a href="#faq">よくある質問</a></li>
     <li><a href="#contact">お問い合わせ</a></li>
   </ul>
-  <!-- ✏️ メールアドレスを変更 -->
-  <a href="mailto:your@email.com" class="nav-cta">✉ 注文する</a>
-</nav>
 
-<!-- ヒーロー -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow"><span class="tag">新しい暮らしのスタンダード</span></div>
-    <h1 class="hero-title">
-      毎日をもっと<br>
-      <strong>きれいに、</strong><br>
-      もっと豊かに。
-    </h1>
-    <p class="hero-sub">
-      プロ品質の掃除グッズと、映像体験を変える高性能プロジェクター。
-      あなたの暮らしをアップグレードする2つのプロダクト。
-    </p>
-    <div class="hero-btns">
-      <a href="#products" class="btn-primary">商品を見る</a>
-      <a href="#contact" class="btn-outline">注文・お問い合わせ</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-display">
-      <div class="hero-icons">
-        <div class="hero-icon-circle"><span>🧹</span></div>
-        <div class="hero-sep">&amp;</div>
-        <div class="hero-icon-circle"><span>📽️</span></div>
-      </div>
-      <div class="hero-label">2 Products Available</div>
-    </div>
-  </div>
-</section>
+  <!-- ✏️ メールアドレスを変更 -->
+  <a href="/cdn-cgi/l/email-protection#70091f050230151d11191c5e131f1d" class="nav-cta">✉ 注文する</a>
+</nav>
 
 <!-- 商品セクション -->
 <section class="products-section" id="products">
@@ -499,7 +391,7 @@ footer { background: var(--ink); padding: 48px 32px 32px; }
             -->
             <div class="shopify-slot">
               <!-- ✏️ メールアドレスを変更 -->
-              <a href="mailto:your@email.com?subject=【注文】掃除グッズ&body=お名前：%0D%0Aご住所：%0D%0A電話番号：%0D%0A注文数：%0D%0Aその他ご要望：" class="order-btn">
+              <a href="/cdn-cgi/l/email-protection#f28b9d8780b2979f939b9edc919d9fcd81879098979186cf11726214415a146475117263147c711b6b56117042117171117048d4909d968bcf11737817627f177b7f1d4e68d7c2b6d7c2b3117366164f7d147b721d4e68d7c2b6d7c2b31b69491a5b43156758177d451d4e68d7c2b6d7c2b314415a1464751467421d4e68d7c2b6d7c2b311736f11735c1649641173661a5473146e691d4e68" class="order-btn">
                 メールで注文する
               </a>
             </div>
@@ -552,7 +444,7 @@ footer { background: var(--ink); padding: 48px 32px 32px; }
             -->
             <div class="shopify-slot">
               <!-- ✏️ メールアドレスを変更 -->
-              <a href="mailto:your@email.com?subject=【注文】プロジェクター&body=お名前：%0D%0Aご住所：%0D%0A電話番号：%0D%0A注文数：%0D%0Aその他ご要望：" class="order-btn">
+              <a href="/cdn-cgi/l/email-protection#c7bea8b2b587a2aaa6aeabe9a4a8aaf8b4b2a5ada2a4b3fa24475721746f21514024475624445024446a24457f24456024456824457824447be1a5a8a3befa24464d22574a224e4a287b5de2f783e2f786244653237a48214e47287b5de2f783e2f7862e5c7c2f6e7620526d224870287b5de2f783e2f78621746f215140215277287b5de2f783e2f78624465a244669237c512446532f6146215b5c287b5d" class="order-btn">
                 メールで注文する
               </a>
             </div>
@@ -665,7 +557,7 @@ footer { background: var(--ink); padding: 48px 32px 32px; }
     <h2 class="cta-title">ご注文・お問い合わせ</h2>
     <p class="cta-sub">ご不明な点やご注文はメールにてお気軽にどうぞ。<br>通常2営業日以内にご返信いたします。</p>
     <!-- ✏️ メールアドレスを変更 -->
-    <a href="mailto:your@email.com?subject=お問い合わせ" class="cta-email-btn">✉ &nbsp;your@email.com</a>
+    <a href="/cdn-cgi/l/email-protection#6e17011b1c2e0b030f0702400d0103511d1b0c040b0d1a538defe48bfbe18defea8bfee68dece18deff5" class="cta-email-btn">✉ &nbsp;<span class="__cf_email__" data-cfemail="4b32243e390b2e262a222765282426">[email&#160;protected]</span></a>
     <div class="cta-note">平日 10:00〜18:00 対応 ／ 土日祝は翌営業日のご返信となります</div>
   </div>
 </section>
@@ -699,28 +591,4 @@ footer { background: var(--ink); padding: 48px 32px 32px; }
       <h4>Contact</h4>
       <ul>
         <!-- ✏️ メールアドレスを変更 -->
-        <li><a href="mailto:your@email.com">your@email.com</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <!-- ✏️ ショップ名・年を変更 -->
-    <span>© 2025 CleanVision Store. All rights reserved.</span>
-    <span>Payment: 銀行振込 / PayPay</span>
-  </div>
-</footer>
-
-<script>
-// FAQアコーディオン
-document.querySelectorAll('.faq-q').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
-</script>
-
-</body>
-</html>
+        <li><a href="/cdn-cgi/l/email-protection#7e07110b0c3e1b131f1712501d1113"><span class="__cf_email__" data-cfemail="7b02140e093b1e161a121755181416">
