@@ -2,271 +2,414 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>yourshop</title>
-
-<!--
-=============================================================
-  ✏️ カスタマイズガイド
-=============================================================
-  【ショップ名】   "yourshop" を変更
-  【プロフィール画像】.avatar 内の絵文字を <img> タグに変更
-  【自己紹介】    .bio を変更（不要なら削除）
-  【SNSリンク】   .social-row の href を変更
-  【商品カード】   各 .card の href・画像・テキストを変更
-=============================================================
--->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#f5f4f0">
+<title>monolinkjp | おすすめ商品リンク集</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #f5f4f0;
+    --white: #ffffff;
+    --border: #e4e2dd;
+    --accent: #3d3d3d;
+    --btn: #2f2f2f;
+    --btn-hover: #111;
+    --red: #d94f3d;
+    --text: #1a1a1a;
+    --text-sub: #5a5a5a;
+    --text-muted: #999;
+    --card-bg: #eceae4;
+    --radius: 14px;
+    --shadow: 0 2px 8px rgba(0,0,0,0.07);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
 
-body {
-  background: #ede8e1;
-  font-family: 'Noto Sans JP', sans-serif;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  padding: 0 16px 60px;
-  color: #2a2520;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
 
-.page {
-  width: 100%;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    min-height: 100vh;
+    max-width: 480px;
+    margin: 0 auto;
+    padding-bottom: calc(40px + var(--safe-bottom));
+    -webkit-font-smoothing: antialiased;
+  }
 
-/* ── プロフィール ── */
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 0 28px;
-  gap: 12px;
-  animation: fadeUp .5s ease both;
-}
+  /* ── Header ── */
+  .header {
+    padding: 32px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    box-shadow: var(--shadow);
+  }
 
-.avatar {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  border: 2px solid rgba(42,37,32,0.15);
-  background: #d4cec5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42px;
-  overflow: hidden;
-  margin-bottom: 4px;
-}
-/*
-  ✏️ 画像を使う場合:
-  <div class="avatar">
-    <img src="profile.jpg" style="width:100%;height:100%;object-fit:cover;">
-  </div>
-*/
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-.name {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  color: #2a2520;
-}
+  .account-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
 
-/* ✏️ 自己紹介が不要なら .bio ごと削除 */
-.bio {
-  font-size: 13px;
-  color: #7a726a;
-  text-align: center;
-  line-height: 1.65;
-  font-weight: 300;
-}
+  .account-bio {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    text-align: center;
+    line-height: 1.7;
+  }
 
-/* ── SNS アイコン行 ── */
-.social-row {
-  display: flex;
-  gap: 20px;
-  margin-top: 4px;
-}
-.social-row a {
-  color: #4a4540;
-  font-size: 22px;
-  text-decoration: none;
-  opacity: 0.7;
-  transition: opacity .2s, transform .2s;
-  display: flex;
-  align-items: center;
-}
-.social-row a:hover { opacity: 1; transform: translateY(-2px); }
+  /* SNS icons under bio */
+  .sns-icons {
+    display: flex;
+    gap: 14px;
+    margin-top: 2px;
+  }
 
-/* ── カード一覧 ── */
-.cards {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+  .sns-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.12s;
+  }
 
-.card {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  background: #f5f1eb;
-  border-radius: 10px;
-  overflow: hidden;
-  text-decoration: none;
-  color: #2a2520;
-  transition: transform .2s, box-shadow .2s, background .2s;
-  animation: fadeUp .5s ease both;
-  border: 1px solid rgba(42,37,32,0.07);
-  min-height: 80px;
-}
-.card:nth-child(1) { animation-delay: .05s; }
-.card:nth-child(2) { animation-delay: .10s; }
-.card:nth-child(3) { animation-delay: .15s; }
-.card:nth-child(4) { animation-delay: .20s; }
+  .sns-icon-btn:active { background: var(--border); }
+  .sns-icon-btn svg { width: 15px; height: 15px; fill: var(--text); }
 
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(42,37,32,0.1);
-  background: #fff;
-}
+  /* ── Section label ── */
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 8px 16px 10px;
+  }
 
-/* 左の画像エリア */
-.card-img {
-  width: 90px;
-  min-width: 90px;
-  height: 80px;
-  background: #d8d0c5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 36px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-/*
-  ✏️ 商品画像を使う場合:
-  <div class="card-img"><img src="images/cleaning.jpg" alt="掃除グッズ"></div>
-*/
+  /* ── Cards ── */
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 12px;
+  }
 
-/* 右のテキストエリア */
-.card-body {
-  flex: 1;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-}
-.card-title {
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: #2a2520;
-}
-.card-sub {
-  font-size: 12px;
-  color: #7a726a;
-  line-height: 1.5;
-  font-weight: 300;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+  /* Horizontal card: image left, text right — like reference screenshot */
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    height: 120px;
+    text-decoration: none;
+    color: var(--text);
+    position: relative;
+    transition: transform 0.12s, box-shadow 0.12s;
+    box-shadow: var(--shadow);
+  }
 
-/* 右矢印 */
-.card-arrow {
-  padding: 0 16px 0 8px;
-  font-size: 14px;
-  color: #b0a89e;
-  flex-shrink: 0;
-}
+  .card:active { transform: scale(0.98); box-shadow: none; }
 
-/* ── フッター ── */
-footer {
-  margin-top: 48px;
-  font-size: 11px;
-  color: #b0a89e;
-  letter-spacing: 0.5px;
-  text-align: center;
-}
+  /* Left: product image */
+  .card-img {
+    width: 130px;
+    flex-shrink: 0;
+    background: #d8d5cd;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 44px;
+    position: relative;
+  }
+
+  .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-badge {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .img-badge.new  { background: var(--btn); }
+  .img-badge.sale { background: var(--red); }
+
+  /* Right: text content */
+  .card-body {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .card-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-desc {
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .card-price {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* Arrow button */
+
+  /* Benefit pills */
+  .pills {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    font-size: 0.58rem;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: rgba(0,0,0,0.07);
+    color: var(--text-sub);
+  }
+
+  /* ── Floating SNS bar ── */
+  .sns-bar {
+    position: fixed;
+    bottom: calc(16px + var(--safe-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    padding: 8px 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    white-space: nowrap;
+  }
+
+  .sns-bar-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-right: 2px;
+  }
+
+  .sns-bar-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .sns-bar-btn:active { background: var(--border); }
+  .sns-bar-btn svg { width: 15px; height: 15px; fill: var(--text); }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 20px 16px 8px;
+    font-size: 0.63rem;
+    color: var(--text-muted);
+    line-height: 2;
+  }
+
+  /* Animations */
+  .header { animation: fadeUp 0.45s ease both; }
+  .cards  { animation: fadeUp 0.45s 0.08s ease both; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 </style>
 </head>
 <body>
 
-<div class="page">
+<!-- Header -->
+<div class="header">
+  <div class="avatar">
+    <img src="data:image/png;base64,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" alt="monolinkjp">
+  </div>
+  <div class="account-name">monolinkjp</div>
+  <p class="account-bio">TikTokで紹介した商品のリンクまとめ<br>気になった商品はここからチェック✔️</p>
+  <div class="sns-icons">
+    <a href="#" class="sns-icon-btn" title="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.79 1.53V6.79a4.85 4.85 0 01-1.02-.1z"/></svg>
+    </a>
+    <a href="#" class="sns-icon-btn" title="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
 
-  <!-- プロフィール -->
-  <div class="profile">
-    <!-- ✏️ 絵文字 or <img> に変更 -->
-    <div class="avatar">🛍️</div>
+  </div>
+</div>
 
-    <!-- ✏️ ショップ名を変更 -->
-    <div class="name">yourshop</div>
 
-    <!-- ✏️ 自己紹介（不要なら削除） -->
-    <div class="bio">掃除グッズ &amp; プロジェクター<br>暮らしをもっと豊かに。</div>
+<!-- Cards -->
+<div class="cards">
 
-    <!-- ✏️ SNS リンクを変更（不要なアイコンは削除） -->
-    <div class="social-row">
-      <a href="https://instagram.com/yourshop" title="Instagram">📸</a>
-      <a href="mailto:your@email.com" title="メール">✉️</a>
+  <a href="#" class="card">
+    <div class="card-img">
+      💄
+      <span class="img-badge new">NEW</span>
     </div>
-  </div>
-
-  <!-- 商品・リンクカード -->
-  <div class="cards">
-
-    <!-- 商品1: 掃除グッズ -->
-    <!--
-      ✏️ 画像を追加する場合:
-      <div class="card-img"><img src="images/cleaning.jpg" alt="掃除グッズ"></div>
-    -->
-    <a href="index.html" class="card">
-      <div class="card-img">🧹</div>
-      <div class="card-body">
-        <div class="card-title">掃除グッズを見る</div>
-        <div class="card-sub">プロクリーン スティック — 頑固な汚れも一拭き。毎日使いやすいシンプル設計。</div>
+    <div class="card-body">
+      <div class="card-top">
+        <div class="card-title">商品名をここに入力してください</div>
+        <div class="card-desc">商品の簡単な説明文をここに入力</div>
       </div>
-      <div class="card-arrow">›</div>
-    </a>
-
-    <!-- 商品2: プロジェクター -->
-    <a href="index.html" class="card">
-      <div class="card-img">📽️</div>
-      <div class="card-body">
-        <div class="card-title">プロジェクターを見る</div>
-        <div class="card-sub">ルミナ ミニプロジェクター — 手のひらサイズで最大120インチ投影。</div>
+      <div class="card-bottom">
+        <div>
+          <div class="card-price">¥2,980</div>
+          <div class="pills"><span class="pill">送料無料</span><span class="pill">公式</span></div>
+        </div>
       </div>
-      <div class="card-arrow">›</div>
-    </a>
+    </div>
+  </a>
 
+  <a href="#" class="card">
+    <div class="card-img">👗</div>
+    <div class="card-body">
+      <div class="card-top">
+        <div class="card-title">商品名をここに入力してください</div>
+        <div class="card-desc">商品の簡単な説明文をここに入力</div>
+      </div>
+      <div class="card-bottom">
+        <div>
+          <div class="card-price">¥4,500</div>
+          <div class="pills"><span class="pill">公式</span></div>
+        </div>
+      </div>
+    </div>
+  </a>
 
+  <a href="#" class="card">
+    <div class="card-img">
+      🕯️
+      <span class="img-badge sale">SALE</span>
+    </div>
+    <div class="card-body">
+      <div class="card-top">
+        <div class="card-title">商品名をここに入力してください</div>
+        <div class="card-desc">商品の簡単な説明文をここに入力</div>
+      </div>
+      <div class="card-bottom">
+        <div>
+          <div class="card-price">¥1,800</div>
+          <div class="pills"><span class="pill">ポイント還元</span></div>
+        </div>
+      </div>
+    </div>
+  </a>
 
-  </div>
+  <a href="#" class="card">
+    <div class="card-img">🍫</div>
+    <div class="card-body">
+      <div class="card-top">
+        <div class="card-title">商品名をここに入力してください</div>
+        <div class="card-desc">商品の簡単な説明文をここに入力</div>
+      </div>
+      <div class="card-bottom">
+        <div>
+          <div class="card-price">¥980</div>
+          <div class="pills"><span class="pill">送料無料</span></div>
+        </div>
+      </div>
+    </div>
+  </a>
 
-  <!-- フッター -->
-  <!-- ✏️ ショップ名を変更 -->
-  <footer>© 2025 yourshop</footer>
+  <a href="#" class="card">
+    <div class="card-img">✨</div>
+    <div class="card-body">
+      <div class="card-top">
+        <div class="card-title">商品名をここに入力してください</div>
+        <div class="card-desc">商品の簡単な説明文をここに入力</div>
+      </div>
+      <div class="card-bottom">
+        <div>
+          <div class="card-price">¥3,200</div>
+          <div class="pills"><span class="pill">送料無料</span><span class="pill">公式</span></div>
+        </div>
+      </div>
+    </div>
+  </a>
 
 </div>
+
+<div class="footer">© 2026 monolinkjp</div>
 
 </body>
 </html>
